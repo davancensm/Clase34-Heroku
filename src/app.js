@@ -11,7 +11,7 @@ const cluster = require("cluster")
 const os = require("os")
 const log4js = require("log4js")
 const ejs = require("ejs")
-const User = require("./models/usersSchema.js")
+const User = require("./models/Users.js")
 
 log4js.configure({
     appenders: {
