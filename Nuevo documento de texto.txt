@@ -1,5 +1,0 @@
-2022-06-14T00:03:07.576800+00:00 app[web.1]: Warning: connect.session() MemoryStore is not
-2022-06-14T00:03:07.576808+00:00 app[web.1]: designed for a production environment, as it will leak
-2022-06-14T00:03:07.576808+00:00 app[web.1]: memory, and will not scale past a single process.
-2022-06-14T00:03:07.589217+00:00 app[web.1]: [32m[2022-06-14T00:03:07.588] [INFO] default - [39mListening on port 8080 in process 22
-2022-06-14T00:03:08.693915+00:00 app[web.1]: [32m[2022-06-14T00:03:08.693] [INFO] default - [39mConnect to DB
