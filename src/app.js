@@ -33,35 +33,15 @@ let logError = log4js.getLogger("file2")
 const num_CPU = os.cpus().length
 dotenv.config()
 
-const options = { default: { modo: "fork" }, alias: { p: "port" } }
-const args = minimist(process.argv.slice(2), options)
+
 
 const app = express()
-const PORT = args.port || 8080
+const PORT = 8080
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
 
-switch (args.modo) {
-    case "fork":
-        const server = app.listen(PORT, () => logConsole.info(`Listening on port ${PORT} in process ${process.pid}`))
-        break
-    case "cluster":
-        if (cluster.isPrimary) {
-            logConsole.info(`master ${process.pid} is running`)
-            for (let i = 0; 1 < num_CPU; i++) {
-                cluster.fork()
-            }
-            cluster.on("exit", (worker, code, signal) => {
-                logConsole.info(`worker ${worker.process.pid} died`)
-            })
-        } else {
-            const server = app.listen(PORT, () => logConsole.info(`Listening on port ${PORT} in process ${process.pid}`))
-            logConsole.info(`worker ${process.pid} started`)
-        }
-        break
-    default:
-        break
-}
+const server = app.listen(PORT, () => logConsole.info(`Listening on port ${PORT}`))
+
 
 app.set("views", __dirname + "/views")
 app.set("view engine", "ejs")
